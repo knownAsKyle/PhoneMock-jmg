@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+        </title>
+        <link rel="stylesheet" type="text/css" href="styles/component.min.css" />
+    </head>
+    <body>
+    	<div class="userOptionsMenu">
+    		<span id="newModuleButton" class="optButton">+ Module</span>
+    		<span id="newAdButton" class="optButton">+ Ad</span>
+    	</div>
+        <div class="css-device css-device--mobile">
+            <div class="inner--mobile">
+                <div id="topAd" class="ad">
+                    <span class="contentLbl">
+                        ad 320 x 50
+                    </span>
+                </div>
+                <div class="nav">
+                    <span class="contentLbl">
+                        Header
+                    </span>
+                    <div id="nav-icon3">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+                <div id="content" class="content">
+                   
+                </div>
+                <div class="footer">
+                    <span class="contentLbl">
+                        Footer
+                    </span>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript" src="sortable.min.js"></script>
+        <script>
+            (function(){
+            	var modStart = '<div class="module"><span class="contentLbl">';
+            	var modEnd = '</span><div>';
+            	var adStart = '<div class="ad"><span class="contentLbl">';
+            	var adEnd = '</span></div>';
+            	var modCount = document.querySelectorAll('.module').length;
+
+	            var content = document.getElementById("content");
+	            var menuIcon = document.getElementById("nav-icon3");
+	            var newModuleButton = document.getElementById("newModuleButton");
+	            var newAdButton = document.getElementById("newAdButton");
+
+	            var sortable = Sortable.create(content,{animation: 150});
+	            
+	            menuIcon.addEventListener("click",handleMenuIconClick);
+	            newModuleButton.addEventListener("click",addModule);
+	            newAdButton.addEventListener("click",addAd);
+
+	            function handleMenuIconClick(){
+	            	this.classList.toggle('open');
+	            }
+
+	            function addModule(){
+	            	modCount = document.querySelectorAll('.module').length;
+	            	var lbl = prompt("Enter module name.","module_"+modCount);
+	            	if(lbl){
+	            		content.appendChild(makeNode("mod",lbl));
+	            	}	
+	            }
+
+	            function addAd(){
+	            	var lbl = prompt("Enter ad name.","ad 320 x 50");
+	            	if(lbl){
+	            		content.appendChild(makeNode("ad",lbl));
+	            	}
+	            }
+
+	            function makeNode(nodeType, lbl){
+	            	var d = document.createElement("div");
+	            	var s = document.createElement("span");
+	            	var t = document.createTextNode(lbl);
+	            	switch(nodeType){
+	            		case "ad":
+	            			d.className = "ad";
+	            		break;
+	            		case "mod":
+	            			d.className = "module";
+	            		break;
+	            		default:
+	            	}
+	            	s.className = "contentLbl";
+	            	s.appendChild(t);
+	            	d.appendChild(s);
+	            	d.addEventListener("dblclick",function(){
+	            		this.parentNode.removeChild(this);
+	            	});
+	            	return d;
+	            }
+            })();
+        </script>
+    </body>
+</html>
