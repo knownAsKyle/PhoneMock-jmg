@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>
-        </title>
+        <meta charset="UTF-8"> 
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"> 
+        <title>Kyle Uhan |+ ••|</title>
         <link rel="stylesheet" type="text/css" href="styles/component.min.css" />
     </head>
     <body>
@@ -11,13 +12,13 @@
     		<span id="newAdButton" class="optButton">+ Ad</span>
     	</div>
         <div class="css-device css-device--mobile">
-            <div class="inner--mobile">
-                <div id="topAd" class="ad">
+            <div id="inner--mobile" class="inner--mobile">
+                <div id="topAd" class="ad main-handle">
                     <span class="contentLbl">
                         ad 320 x 50
                     </span>
                 </div>
-                <div class="nav">
+                <div class="nav main-handle">
                     <span class="contentLbl">
                         Header
                     </span>
@@ -28,10 +29,8 @@
                         <span></span>
                     </div>
                 </div>
-                <div id="content" class="content">
-                   
-                </div>
-                <div class="footer">
+                <div id="content" class="content"></div>
+                <div class="footer main-handle">
                     <span class="contentLbl">
                         Footer
                     </span>
@@ -47,12 +46,16 @@
             	var adEnd = '</span></div>';
             	var modCount = document.querySelectorAll('.module').length;
 
+                var all =document.getElementById("inner--mobile");
 	            var content = document.getElementById("content");
+
+
 	            var menuIcon = document.getElementById("nav-icon3");
 	            var newModuleButton = document.getElementById("newModuleButton");
 	            var newAdButton = document.getElementById("newAdButton");
 
 	            var sortable = Sortable.create(content,{animation: 150});
+                var sortable2 = Sortable.create(all,{animation:150, handle: ".main-handle"})
 	            
 	            menuIcon.addEventListener("click",handleMenuIconClick);
 	            newModuleButton.addEventListener("click",addModule);

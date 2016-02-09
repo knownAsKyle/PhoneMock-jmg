@@ -9,14 +9,6 @@
     margin: 0 auto;
 }
 
-.css-device__image {
-    display: block;
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    height: auto;
-}
-
 .css-device--mobile {
     width: 300px;
     border-top: solid 24px #ddd;
@@ -53,12 +45,16 @@
 }
 
 @media all and (max-width: 720px) {
+    .inner--mobile{
+       
+    }
     .css-device--mobile {
         border-top: solid 36px #ddd;
         border-left: solid 18px #ddd;
         border-right: solid 18px #ddd;
         border-bottom: solid 72px #ddd;
         border-radius: 18px;
+        width: 330px;
     }
     .css-device--mobile::before {
         top: 18px;
@@ -80,9 +76,24 @@
     }
 }
 
+@media all and (max-width: 400px) {
+     .css-device  {
+        margin: 0;
+    }
+
+    .css-device--mobile {
+        border-top: solid 36px #ddd;
+        border-left: solid 4px #ddd;
+        border-right: solid 4px #ddd;
+        border-bottom: solid 72px #ddd;
+        border-radius: 18px;
+        width: 97%;
+    }
+}
+
 .userOptionsMenu {
     position: fixed;
-    width: 100%;
+   
     height: 20px;
 }
 
@@ -229,8 +240,17 @@
     color: white;
 }
 
-.content {}
+.content {
+    background-color: yellow;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    margin-top: 6px;
+}
 
+.content div{
+    width: 90%;
+    margin-left: 5%;
+}
 .module {
     height: 100px;
     margin-top: 4px;
